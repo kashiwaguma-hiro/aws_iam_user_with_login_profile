@@ -1,11 +1,11 @@
 resource "aws_iam_user" "default" {
-  for_each      = var.users
+  for_each      = var.iam_users
   name          = each.key
   force_destroy = var.force_destroy
 }
 
 resource "aws_iam_user_login_profile" "default" {
-  for_each                = var.users
+  for_each                = var.iam_users
   user                    = each.key
   pgp_key                 = each.value.pgp_key
   password_length = var.password_length
@@ -22,7 +22,7 @@ resource "aws_iam_user_login_profile" "default" {
 }
 
 resource "aws_iam_user_group_membership" "default" {
-  for_each   = var.users
+  for_each   = var.iam_users
   groups     = each.value.groups
   user       = each.key
   depends_on = [aws_iam_user.default]
