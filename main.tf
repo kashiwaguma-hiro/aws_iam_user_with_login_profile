@@ -1,15 +1,15 @@
 resource "aws_iam_user" "default" {
   for_each      = var.iam_users
   name          = each.key
-  force_destroy = var.force_destroy
+  force_destroy = var.iam_user_force_destroy
 }
 
 resource "aws_iam_user_login_profile" "default" {
   for_each                = var.iam_users
   user                    = each.key
   pgp_key                 = each.value.pgp_key
-  password_length = var.password_length
-  password_reset_required = var.password_reset_required
+  password_length         = var.login_password_length
+  password_reset_required = var.login_password_reset_required
 
   lifecycle {
     ignore_changes = [

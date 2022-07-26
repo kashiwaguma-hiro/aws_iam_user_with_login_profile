@@ -8,19 +8,19 @@ variable "iam_users" {
 }
 
 variable "iam_user_force_destroy" {
-  type = bool
+  type        = bool
   description = "Destroy実行時に、Terraform管理外のMFA・キーを生成している場合でもユーザを削除する"
-  default = false
+  default     = false
 }
 
 variable "login_password_length" {
-  type = number
+  type        = number
   description = "生成する初期ログインパスワードの長さ"
-  default = 20
+  default     = 20
 }
 
 variable "login_password_reset_required" {
-  type = bool
+  type        = bool
   description = "ログイン後のパスワードリセットを強制する"
-  default = true
+  default     = true
 }
