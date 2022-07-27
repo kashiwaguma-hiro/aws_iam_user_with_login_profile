@@ -1,7 +1,7 @@
 variable "iam_users" {
   type = map(object({
-    pgp_key = string
     groups  = list(string)
+    pgp_key = string
     tags    = map(string)
   }))
   description = "作成するIAM User情報"
