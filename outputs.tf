@@ -1,4 +1,4 @@
-output "name" {
+output "names" {
   value = values(aws_iam_user.default)[*].name
 }
 
